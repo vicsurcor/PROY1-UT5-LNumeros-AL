@@ -1,0 +1,8 @@
+*.class
+*.ctxt
+*.pkg
+*.pkh
+userhome/*
+*.bak
+.idea/*
+.out/*
