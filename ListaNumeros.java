@@ -1,10 +1,10 @@
 /**
  * Un objeto de esta clase
- * guarda una lista de nÔøΩmeros enteros
+ * guarda una lista de n?meros enteros
  * 
- * La clase incluye una serie de mÔøΩtodos de instancia
+ * La clase incluye una serie de m?todos de instancia
  * para hacer operaciones sobre la lista
- * y dos  mÔøΩtodos estÔøΩticos para trabajar con
+ * y dos  m?todos est?ticos para trabajar con
  * arrays de dos dimensiones
  *
  * @author -
@@ -36,26 +36,26 @@ public class ListaNumeros {
      * Crea e inicializa adecuadamente los
      * atributos
      *
-     * param: n el tama√±o m√°ximo de la lista
+     * param: n el tamaÒo m·ximo de la lista
      */
     public ListaNumeros(int n) {
         //TODO
 
-        int[] lista = new int[n];
+        lista = new int[n];
         pos = 0;
     }
 
     /**
-     * A√±ade un valor al final de la lista
-     * siempre que no est√© completa
+     * AÒade un valor al final de la lista
+     * siempre que no estÈ completa
      *
-     * @param numero el valor que se a√±ade.
-     * @return true si se ha podido a√±adir, false en otro caso
+     * @param numero el valor que se aÒade.
+     * @return true si se ha podido aÒadir, false en otro caso
      */
     public boolean addElemento(int numero) {
         //TODO
 
-        if (lista[pos] == 0){
+        if (!estaCompleta()){
 
             lista[pos] = numero;
             pos++;
@@ -69,7 +69,7 @@ public class ListaNumeros {
     }
 
     /**
-     * @return true si la lista est√° completa, false en otro caso
+     * @return true si la lista est· completa, false en otro caso
      * Hacer sin if
      */
     public boolean estaCompleta() {
@@ -82,7 +82,7 @@ public class ListaNumeros {
     }
 
     /**
-     * @return true si la lista est√° vac√≠a, false en otro caso.
+     * @return true si la lista est· vacÌa, false en otro caso.
      * Hacer sin if
      */
     public boolean estaVacia() {
@@ -95,7 +95,7 @@ public class ListaNumeros {
     }
 
     /**
-     * @return el n¬∫ de elementos realmente guardados en la lista
+     * @return el n∫ de elementos realmente guardados en la lista
      */
     public int getTotalNumeros() {
         //TODO
@@ -105,26 +105,28 @@ public class ListaNumeros {
     }
 
     /**
-     * Vac√≠a la lista
+     * VacÌa la lista
      */
     public void vaciarLista() {
        //TODO
-        for (int i = pos;i > 0; i--){
-            lista[i] = 0;
-        }
+//        for (int i = pos;i > 0; i--){
+//            lista[i] = 0;
+//        }
+
+        pos = 0;
     }
 
     /**
-     * @return una cadena con representaci√≥n textual de la lista
+     * @return una cadena con representaciÛn textual de la lista
      * (leer enunciado)
      * 
-     * Si la lista est√° vac√≠a devuelve ""
+     * Si la lista est· vacÌa devuelve ""
      */
     public String toString() {
        //TODO
         int e = 0;
         String res = "";
-        String cab = String.valueOf(CAR_CABECERA) + String.valueOf(CAR_CABECERA) + String.valueOf(CAR_CABECERA) + " " + String.valueOf(CAR_CABECERA) + String.valueOf(CAR_CABECERA) + String.valueOf(CAR_CABECERA);
+        String cab = String.valueOf(CAR_CABECERA) + String.valueOf(CAR_CABECERA) + String.valueOf(CAR_CABECERA) + String.valueOf(CAR_CABECERA) + String.valueOf(CAR_CABECERA) + String.valueOf(CAR_CABECERA);
         while (e < pos){
             res += cab;
             e++;
@@ -159,9 +161,9 @@ public class ListaNumeros {
 
     /**
      *  
-     * @return el segundo valor m√°ximo en la lista
-     * Cuando no haya un segundo m√°ximo el m√©todo
-     * devolver√° el valor Integer.MIN_VALUE
+     * @return el segundo valor m·ximo en la lista
+     * Cuando no haya un segundo m·ximo el mÈtodo
+     * devolver· el valor Integer.MIN_VALUE
      * 
      * Si lista = {21, -5, 28, -7, 28, 77, 77, -17, 21, 15, 28, 28, 77} se devuelve 28
      * Si lista = {21, -5, 28, -7, 77} se devuelve 28
@@ -169,34 +171,30 @@ public class ListaNumeros {
      * Si lista = {21} se devuelve Integer.MIN_VALUE
      * Si lista = {21, 21, 21, 21} se devuelve Integer.MIN_VALUE
      * 
-     * No se puede usar ning√∫n otro array auxiliar ni hay que ordenar previamente
+     * No se puede usar ning˙n otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
     public int segundoMaximo() {
        //TODO
-            int max = 0;
-            int max2 = 0;
+            int max = Integer.MIN_VALUE;
+            int max2 = Integer.MIN_VALUE;
         for (int i = 0; i < pos; i++){
-            if (lista[i] > max){
-                max = lista[i];
-                if (lista[i] < max && max2 < lista[i]){
-                    max2 = lista[i];
-                }
+            if (lista[i] > max){ //Es un nuevo primer m·ximo
+                max2 = max; //El segundo m·ximo pasa a ser el antiguo primer m·ximo
+                max = lista[i];//Actualizo el nuevo primer m·ximo
+            }
+            else if (lista[i]> max2 && lista[i]<max) {//Si el n˙mero est· entre max2 y max
+                max2 = lista[i];//SÛlo actualizamos el segundo m·ximo
             }
         }
-        if (max2 == 0){
-            return Integer.MIN_VALUE;
-        }
-        else {
-            return max2;
-        }
+        return max2;
     }
 
     /**
-     * El m√©todo coloca los valores que son segundos m√°ximos al principio de
-     * la lista respetando el orden de aparici√≥n del resto de elementos
+     * El mÈtodo coloca los valores que son segundos m·ximos al principio de
+     * la lista respetando el orden de apariciÛn del resto de elementos
      * 
-     * No se puede usar ning√∫n otro array auxiliar ni hay que ordenar previamente
+     * No se puede usar ning˙n otro array auxiliar ni hay que ordenar previamente
      * la lista
      * 
      * Si lista = {21, -5, 28, -7, 28, 77, 77, -17, 21, 15, 28, 28, 77} 
@@ -206,8 +204,8 @@ public class ListaNumeros {
      * Si lista = {21} lista queda igual y se devuelve false
      * Si lista = {21, 21, 21, 21} lista queda igual y se devuelve false
      * 
-     * @return true si se han colocado los segundos m√°ximos
-     *          false si no se han colocado los segundos m√°ximos porque no hab√≠a ninguno
+     * @return true si se han colocado los segundos m·ximos
+     *          false si no se han colocado los segundos m·ximos porque no habÌa ninguno
      */
     public boolean segundosMaximosAlPrincipio() {
         //TODO
@@ -217,7 +215,7 @@ public class ListaNumeros {
             for (int i = 0; i < lista.length; i++) {
                 if (lista[i] == segundoMaximo()) {
                     camb = lista[i];
-                    lista[i] = 0;
+                    lista[i] = 0; //Esto no aporta nada
                     for (int j = i; j > 0; j--) {
                         lista[j] = lista[j - 1];
                     }
@@ -233,27 +231,31 @@ public class ListaNumeros {
     }
 
     /**
-     * @param numero b√∫squeda binaria de  numero en lista
-     * @return devuelve -1 si no se encuentra o la posici√≥n en la que aparece
+     * @param numero b˙squeda binaria de  numero en lista
+     * @return devuelve -1 si no se encuentra o la posiciÛn en la que aparece
      *  
      * El array original lista no se modifica
      * Para ello crea  previamente una copia
      * de lista y trabaja  con la copia
      *  
-     * Usa exclusivamente m√©todos de la clase Arrays
+     * Usa exclusivamente mÈtodos de la clase Arrays
      */
     public int buscarBinario(int numero) {
          //TODO
 
-        int[] listacop = Arrays.copyOf(lista,lista.length);
+        int[] listacop = Arrays.copyOf(lista,pos);
         Arrays.sort(listacop);
         int index = Arrays.binarySearch(listacop,numero);
-        return index;
+        //return index;
+        if(index>=0){
+            return index;
+        }
+        else return -1;
     }
 
     /**
      * 
-     * @return devuelve un array bidimensional de enteros de tama√±o DIMENSION
+     * @return devuelve un array bidimensional de enteros de tamaÒo DIMENSION
      * inicializado con valores aleatorios entre 0 y 10 inclusive
      * 
      * Estos valores van a representar el brillo de una zona del espacio
@@ -265,7 +267,8 @@ public class ListaNumeros {
         int[][] brillos = new int[DIMENSION][DIMENSION];
        for (int i = 0; i < brillos.length; i++){
            for (int j = 0; j < brillos[i].length; j++){
-               int num = generador.nextInt(10) + 1;
+               //int num = generador.nextInt(10) + 1;
+               int num = generador.nextInt(11);
                brillos[i][j] = num;
            }
        }
@@ -278,7 +281,7 @@ public class ListaNumeros {
      *          de las mismas dimensiones que el array brillos con
      *          valores true en las posiciones donde hay estrellas
      * 
-     * Una posici√≥n f,c del array brillos es una estrella
+     * Una posiciÛn f,c del array brillos es una estrella
      * si la suma del valor de los brillos de sus cuatro vecinos 
      * (arriba, abajo, derecha e izquierda) es mayor que 30
      * 

@@ -1,13 +1,13 @@
 import java.util.Arrays;
 /**
- *  C√≥digo que testea la clase ListaNumeros
+ *  CÛdigo que testea la clase ListaNumeros
  */
 public class TestListaNumeros
 {
 
     /**
-     * Punto de entrada a la aplicaci√≥n
-     * Contiene c√≥digo para probar los m√©todos de ListaNumeros
+     * Punto de entrada a la aplicaciÛn
+     * Contiene cÛdigo para probar los mÈtodos de ListaNumeros
      */
     public static void main(String[] args) {
 
@@ -65,19 +65,19 @@ public class TestListaNumeros
     public static void testSegundoMaximo(ListaNumeros lista) {        
         int segundo = lista.segundoMaximo();
         if (segundo == Integer.MIN_VALUE) {
-            System.out.println("No hay segundo m√°ximo\n");
+            System.out.println("No hay segundo m·ximo\n");
         }
         else {
-            System.out.println("El valor segundo m√°ximo es : " + segundo);
+            System.out.println("El valor segundo m·ximo es : " + segundo);
         }
 
     }
 
     public static void testSegundosPrincipio(ListaNumeros lista) {
-        System.out.println("Despu√©s de colocar los segundos m√°ximos al principio");
+        System.out.println("DespuÈs de colocar los segundos m·ximos al principio");
         boolean exito = lista.segundosMaximosAlPrincipio();
         if (!exito) {
-            System.out.println("No hab√≠a segundo m√°ximo\n");
+            System.out.println("No habÌa segundo m·ximo\n");
         }
         else {
             System.out.println(lista.toString());
@@ -87,7 +87,7 @@ public class TestListaNumeros
     }
 
     public static void testBuscarBinario(ListaNumeros lista, int numero) {
-        System.out.println("Haciendo una b√∫squeda binaria");
+        System.out.println("Haciendo una b˙squeda binaria");
         System.out.println(lista.toString());
         System.out.println("El valor " + numero + " existe en lista? " + (lista.buscarBinario(numero) != -1));
     }

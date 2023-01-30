@@ -49,7 +49,7 @@ public class GuiLista extends Application {
 
         Scene scene = new Scene(root, 950, 600);
         stage.setScene(scene);
-        stage.setTitle("- Entrega 1 UT5 - Lista de n√∫meros -");
+        stage.setTitle("- Entrega 1 UT5 - Lista de n˙meros -");
         scene.getStylesheets().add(getClass().getResource("/application.css")
             .toExternalForm());
 
@@ -93,12 +93,12 @@ public class GuiLista extends Application {
         panel.setPadding(new Insets(10));
         panel.setAlignment(Pos.CENTER);
 
-        Label lblNumero = new Label("Teclee n¬∫");
+        Label lblNumero = new Label("Teclee n∫");
         txtNumero = new TextField();
         txtNumero.setPrefColumnCount(20);
         txtNumero.setOnAction(e -> addNumero());
 
-        btnAdd = new Button("Add n√∫mero");
+        btnAdd = new Button("Add n˙mero");
         btnAdd.setId("botonadd");
         btnAdd.setOnAction(e -> addNumero());
 
@@ -113,17 +113,17 @@ public class GuiLista extends Application {
         panel.setSpacing(10);
         panel.setPadding(new Insets(10));
 
-        btnSegundoMaximo = new Button("Segundo m√°ximo");
+        btnSegundoMaximo = new Button("Segundo m·ximo");
         btnSegundoMaximo.setMaxSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
         VBox.setVgrow(btnSegundoMaximo, Priority.ALWAYS);
         btnSegundoMaximo.setOnAction(e -> segundoMaximo());
 
-        btnSegundosPrincipio = new Button("Segundos m√°ximos \n     al principio");
+        btnSegundosPrincipio = new Button("Segundos m·ximos \n     al principio");
         btnSegundosPrincipio.setMaxSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
         VBox.setVgrow(btnSegundosPrincipio, Priority.ALWAYS);
         btnSegundosPrincipio.setOnAction(e -> segundosAlPrincipio());
 
-        btnBuscarBinaria = new Button("B√∫squeda binaria");
+        btnBuscarBinaria = new Button("B˙squeda binaria");
         btnBuscarBinaria.setMaxSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
         VBox.setVgrow(btnBuscarBinaria, Priority.ALWAYS);
         btnBuscarBinaria.setOnAction(e -> buscarBinaria());
@@ -144,7 +144,7 @@ public class GuiLista extends Application {
         VBox.setVgrow(btnVaciarLista, Priority.ALWAYS);
         btnVaciarLista.setOnAction(e -> vaciarLista());
 
-        btnClear = new Button("Limpiar √°rea de texto");
+        btnClear = new Button("Limpiar ·rea de texto");
         btnClear.setMaxSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
         VBox.setVgrow(btnClear, Priority.ALWAYS);
         btnClear.setOnAction(e -> clear());
@@ -165,15 +165,15 @@ public class GuiLista extends Application {
     }
 
     /**
-     * a√±ade un nuevo n√∫mero a la lista mostrando el estado actual de la lista en el
-     * √°rea de texto
+     * aÒade un nuevo n˙mero a la lista mostrando el estado actual de la lista en el
+     * ·rea de texto
      * 
      */
     private void addNumero() {
         mostrarLista();
         String strNumero = txtNumero.getText();
         if (strNumero.isEmpty()) {
-            areaTexto.appendText("\nTeclee n¬∫");
+            areaTexto.appendText("\nTeclee n∫");
         }
         else {
             try {
@@ -184,14 +184,14 @@ public class GuiLista extends Application {
                 boolean exito = lista.addElemento(numero);
                 if (!exito) {
                     areaTexto.appendText(
-                        "\nLista completa, no se ha podido a√±adir\n");
+                        "\nLista completa, no se ha podido aÒadir\n");
                 }
                 else {
                     mostrarLista();
                 }
             }
             catch (NumberFormatException e) {
-                areaTexto.appendText("\nTeclee solo d√≠gitos num√©ricos");
+                areaTexto.appendText("\nTeclee solo dÌgitos numÈricos");
             }
             catch (IllegalArgumentException e) {
                 areaTexto.appendText(
@@ -208,7 +208,7 @@ public class GuiLista extends Application {
     }
 
     /**
-     * Muestra en el √°rea de texto el array2D de estrellas
+     * Muestra en el ·rea de texto el array2D de estrellas
      * obtenido a partir de la lista
      */
     private void detectarEstrellas() {
@@ -266,22 +266,22 @@ public class GuiLista extends Application {
     }
 
     /**
-     * Muestra en el √°rea de texto el segundo m√°ximo
+     * Muestra en el ·rea de texto el segundo m·ximo
      * 
      */
     private void segundoMaximo() {
         clear();
         if (lista.estaVacia()) {
-            areaTexto.appendText("Lista vac√≠a\n");
+            areaTexto.appendText("Lista vacÌa\n");
         }
         else {
             escribirLista();
             int segundo = lista.segundoMaximo();
             if (segundo == Integer.MIN_VALUE) {
-                areaTexto.appendText("No hay segundo m√°ximo");
+                areaTexto.appendText("No hay segundo m·ximo");
             }
             else {
-                areaTexto.appendText("Segundo m√°ximo: " + segundo);
+                areaTexto.appendText("Segundo m·ximo: " + segundo);
             }
 
         }
@@ -289,17 +289,17 @@ public class GuiLista extends Application {
     }
 
     /**
-     * Colocar los segundos m√°ximos al principio de la lista
+     * Colocar los segundos m·ximos al principio de la lista
      */
     private void segundosAlPrincipio() {
         clear();
         mostrarLista();
         boolean exito = lista.segundosMaximosAlPrincipio();
         if (!exito) {
-            areaTexto.appendText("No hay segundo m√°ximo");
+            areaTexto.appendText("No hay segundo m·ximo");
         }
         else {
-            areaTexto.appendText("Colocados segundos m√°ximos al principio\n\n");
+            areaTexto.appendText("Colocados segundos m·ximos al principio\n\n");
             escribirLista();
         }
 
@@ -314,7 +314,7 @@ public class GuiLista extends Application {
         escribirLista();
         if (!lista.estaVacia()) {
             try {
-                int numero = pedirNumero("B√∫squeda binaria");
+                int numero = pedirNumero("B˙squeda binaria");
                 int p = lista.buscarBinario(numero);
                 if (p < 0) {
                     areaTexto.appendText("No existe el valor " + numero
@@ -323,7 +323,7 @@ public class GuiLista extends Application {
                 }
                 else {
                     areaTexto.appendText(
-                        "El n¬∫ " + numero + " est√° en la lista ");
+                        "El n∫ " + numero + " est· en la lista ");
                 }
             }
             catch (IllegalArgumentException e) {
@@ -348,7 +348,7 @@ public class GuiLista extends Application {
                 numero = Integer.parseInt(strNumero);
             }
             catch (Exception e) {
-                throw new IllegalArgumentException("Teclee valor num√©rico");
+                throw new IllegalArgumentException("Teclee valor numÈrico");
             }
         }
         else {
@@ -359,12 +359,12 @@ public class GuiLista extends Application {
     }
 
     /**
-     * mostrar la lista y su n¬∫ de elementos en el √°rea de texto
+     * mostrar la lista y su n∫ de elementos en el ·rea de texto
      */
     private void mostrarLista() {
         clear();
         if (lista.estaVacia()) {
-            areaTexto.appendText("Lista vac√≠a\n");
+            areaTexto.appendText("Lista vacÌa\n");
         }
         else {
             escribirLista();
@@ -377,13 +377,13 @@ public class GuiLista extends Application {
     private void escribirLista() {
         areaTexto.appendText("Lista\n");
         areaTexto.appendText(lista.toString() + "\n");
-        areaTexto.appendText("\nN¬∫ de elementos en la lista "
+        areaTexto.appendText("\nN∫ de elementos en la lista "
             + lista.getTotalNumeros() + "\n\n");
 
     }
 
     /**
-     * Vac√≠a la lista
+     * VacÌa la lista
      */
     private void vaciarLista() {
         clear();
@@ -394,7 +394,7 @@ public class GuiLista extends Application {
     }
 
     /**
-     * limpiar √°rea de texto
+     * limpiar ·rea de texto
      */
     private void clear() {
         areaTexto.setText("");
@@ -402,7 +402,7 @@ public class GuiLista extends Application {
     }
 
     /**
-     * finalizar aplicaci√≥n
+     * finalizar aplicaciÛn
      */
     private void salir() {
         Platform.exit();
